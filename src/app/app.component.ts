@@ -1,16 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [MatButtonModule, RouterLink, RouterLinkActive, RouterOutlet],
   template: `
-    <h1>App Component</h1>
-    <router-outlet></router-outlet>
+    <button
+        mat-raised-button
+        routerLink="resolvers-guards-strategy"
+        routerLinkActive="active"
+        #resolversGuardsNavItem="routerLinkActive"
+        [color]="resolversGuardsNavItem.isActive && 'primary'">
+      Resolvers/Guards Strategy
+    </button>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [],
 })
 export class AppComponent {
-  title = 'angular-medium';
 }
